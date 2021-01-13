@@ -17,18 +17,18 @@ oracle_backup(){
 
 	su - oracle -c "expdp info/111111 file=info.dmp log=info.log  compression='all'" &>/dev/null
 	if [ $? -ne 0 ];then
-		echo "info数据导出失败"
+		echo ">>>>>info数据导出失败"
 		exit 1
 	else
-		echo "info数据导出成功"
+		echo ">>>>>info数据导出成功"
 	fi
 
 	su - oracle -c "expdp spauth/111111 file=spauth.dmp log=spauth.log compression='all'" &>/dev/null
 	if [ $? -ne 0 ];then
-		echo "spauth数据导出失败"
+		echo ">>>>>spauth数据导出失败"
 		exit 1
 	else
-		echo "spauth数据导出成功"
+		echo ">>>>>spauth数据导出成功"
 	fi
 
 
@@ -51,10 +51,10 @@ upload_oracle_backup_to_fileserver(){
     	}
 EOF
 	if [ $? -ne 0 ];then
-		echo "上传到远程备份服务器失败"
+		echo ">>>>>上传到远程备份服务器失败"
 		exit 1
 	else
-		echo "上传到远程备份服务器成功"
+		echo ">>>>>上传到远程备份服务器成功"
 		rm -rf $backupDate.zip
 	fi
 }
@@ -65,10 +65,10 @@ delete_15dAgo_backup(){
 		rm -rf "$backupDir"/"$deleteDate"
 
 		if [ $? -ne 0 ];then
-			echo "15天前的Oracle备份删除失败"
+			echo ">>>>>15天前的Oracle备份删除失败"
 			exit 1
 		else
-			echo "15天前的Oracle备份删除成功"
+			echo ">>>>>15天前的Oracle备份删除成功"
 		fi
 	else
 		exit 0

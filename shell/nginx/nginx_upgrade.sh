@@ -30,9 +30,10 @@ function down_file()
 
 #判断是否输入需要更新的版本
 if [ -z "$upgradeVersion" ]; then
-echo ">>>>>请输入要更新的版本"
-exit 0
+read -p ">>>>>请输入要更新的版本" version
+upgradeVersion=$verison
 fi
+
 
 #判断版本是否需要更新
 if [ "$localVersion" == "$upgradeVersion" ]; then

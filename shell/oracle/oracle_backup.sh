@@ -34,6 +34,7 @@ oracle_backup(){
 
   mv $oracleDir/info.* $backupDir/$backupDate
   mv $oracleDir/spauth.* $backupDir/$backupDate
+  echo ">>>>>数据移至备份目录"
 }
 
 upload_oracle_backup_to_fileserver(){
@@ -75,8 +76,9 @@ delete_15dAgo_backup(){
 	fi
 }
 
+echo ">>>>>数据备份开始"
 oracle_backup
-
+echo ">>>>>数据备份结束"
 #upload_oracle_backup_to_fileserver
 
 delete_15dAgo_backup
